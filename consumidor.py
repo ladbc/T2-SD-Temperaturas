@@ -5,7 +5,6 @@
 import time
 import zmq
 import json
-import threading
 from main import unpack
 from random import randrange
 
@@ -41,17 +40,9 @@ while True:
 
   print("media = " + str(media))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  #logica para publicar no topico medias
+  context_pub = zmq.Context()
+  socket_pub = context_pub.socket(zmq.PUB)
+  socket_pub.bind("tcp://*:5556")
+  socket_pub.send_string("{topico} {tupla}".format(topico = "medias", tupla = "testando"))
+  print("depois do publish")

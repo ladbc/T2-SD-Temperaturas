@@ -19,4 +19,17 @@ def unpack(data: str):
     except Exception as erro_msg:
         print("Deu erro ao decompactar?: ", erro_msg)
 
-    return message_struct 
+    return message_struct
+
+def unpack_media(data: str):
+    message_struct = {
+        'sala': "",
+        'hora': "",
+        'media': "",
+    }
+    try:
+        message_struct = json.loads(data)
+    except Exception as erro_msg:
+        print("Deu erro ao decompactar?: ", erro_msg)
+
+    return message_struct
